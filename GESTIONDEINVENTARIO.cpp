@@ -67,4 +67,35 @@ void mostrarMenu() {
     cout << "----------------------------------------\n";
     cout << "Seleccione una opcion: ";
 }
+void registrarProducto(string nombres[], float precios[], int cantidades[], int &total) {
+    if (total >= MAX_PRODUCTOS) {
+        cout << "\n El inventario esta lleno no se pueden registrar mas productos.\n";
+        return;
+    }
 
+    cin.ignore();
+    
+    cout << "\n--- REGISTRAR PRODUCTO ---\n";
+    cout << "Nombre del producto: ";
+    getline(cin, nombres[total]);
+
+    // Validaciones para precio y cantidad
+    do {
+        cout << "Precio unitario ($): ";
+        cin >> precios[total];
+        if (precios[total] < 0) {
+            cout << "El precio no puede ser negativo ,intente de nuevo.\n";
+        }
+    } while (precios[total] < 0);
+
+    do {
+        cout << "Cantidad en stock: ";
+        cin >> cantidades[total];
+        if (cantidades[total] < 0) {
+            cout << " La cantidad no puede ser negativa ,intente de nuevo.\n";
+        }
+    } while (cantidades[total] < 0);
+
+    total++; 
+    cout << "\nProducto registrado con exito.\n";
+}
