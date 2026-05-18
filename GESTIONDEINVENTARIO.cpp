@@ -99,3 +99,58 @@ void registrarProducto(string nombres[], float precios[], int cantidades[], int 
     total++; 
     cout << "\nProducto registrado con exito.\n";
 }
+void mostrarInventario(string nombres[], float precios[], int cantidades[], int total) {
+    if (total == 0) {
+        cout << "\n El inventario esta vacio. Registre productos primero.\n";
+        return;
+    }
+
+    cout << "\n -INVENTARIO ACTUAL -\n";
+    cout << left << setw(20) << "Producto" << setw(15) << "Precio ($)" << setw(15) << "Cantidad" << "\n";
+    cout << "---------------------------------------------------------\n";
+    
+    for (int i = 0; i < total; i++) {
+        cout << left << setw(20) << nombres[i] 
+             << setw(15) << precios[i] 
+             << setw(15) << cantidades[i] << "\n";
+    }
+
+}
+
+void calcularTotalInventario(float precios[], int cantidades[], int total) {
+    if (total == 0) {
+        cout << "\n No hay productos para calcular.\n";
+        return;
+    }
+
+    float valorTotal = 0.0;
+    for (int i = 0; i < total; i++) {
+        valorTotal += (precios[i] * cantidades[i]);
+    }
+
+    cout << "\n- VALOR TOTAL DEL INVENTARIO \n";
+    cout << "El valor de todos los productos del inventario es: $" << valorTotal << "\n";
+}
+
+//  Muestra los productos que tienen menos de 5 unidades en stock
+void reporteStockBajo(string nombres[], int cantidades[], int total) {
+    if (total == 0) {
+        cout << "\n El inventario esta vacio.\n";
+        return;
+    }
+
+    cout << "\n-REPORTE DE REABASTECIMIENTO-\n";
+    bool hayStockBajo = false;
+
+    for (int i = 0; i < total; i++) {
+        if (cantidades[i] < 5) { 
+            cout << "ALERTA: '" << nombres[i] << "' tiene solo " << cantidades[i] << " unidades.\n";
+            hayStockBajo = true;
+        }
+    }
+
+    if (!hayStockBajo) {
+        cout << "Ningun producto tiene stock bajo.\n";
+    }
+}
+
