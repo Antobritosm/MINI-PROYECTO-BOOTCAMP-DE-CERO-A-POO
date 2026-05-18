@@ -56,4 +56,15 @@ int main() {
 
     return 0;
 }
+void mostrarMenu() {
+    cout << "      -SISTEMA DE INVENTARIO-     \n";
+    cout << "----------------------------------------\n";
+    cout << "1. Registrar nuevo producto\n";
+    cout << "2. Mostrar inventario actual\n";
+    cout << "3. Calcular valor total del inventario\n";
+    cout << "4. Reporte de stock bajo (Reabastecimiento)\n";
+    cout << "5. Salir\n";
+    cout << "----------------------------------------\n";
+    cout << "Seleccione una opcion: ";
+}
 
